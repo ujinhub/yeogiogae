@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Member">
+	<insert id="insertMember" parameterType="member">
+		INSERT INTO member
+		VALUES(#{member_id}, #{member_name}, #{member_password}, #{member_tel}, #{member_grade}, default)
+	</insert>
+	
+	<select id="getMemberListCount" resultType="int">
+		SELECT COUNT(*)
+		FROM member
+	</select>
+	
+	<select id="getMemberList" resultType="member">
+		SELECT *
+		FROM member
+		<where>
+			<if test="keyword != null">
+				member_id LIKE '%' || #{keyword} || '%'
+				OR member_name LIKE '%' || #{keyword} || '%'
+			</if>
+		</where>
+		ORDER BY member_regdate DESC
+	</select>
+	
+	<update id="updateMember" parameterType="member">
+		UPDATE member
+		SET item_name = #{item_name}
+		WHERE item_code = #{item_code}
+	</update>
+	
+	<delete id="deleteMember" parameterType="member">
+		DELETE FROM member
+		WHERE member_id = #{member_id}
+	</delete>
+	
+	<select id="getMember" resultType="member">
+		SELECT *
+		FROM member
+		WHERE member_id = #{member_id}
+	</select>
+</mapper>
