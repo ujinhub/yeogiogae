@@ -35,11 +35,10 @@ public class AdminController {
 	@GetMapping("main.mdo")
 	public String mainView(HttpServletRequest request) {
 		
-		// 나중에 주석 풀기
-//		HttpSession session = request.getSession(false);
-//		if(session.getAttribute("user") == null) {
-//			return "login";
-//		}
+		HttpSession session = request.getSession(false);
+		if(session.getAttribute("user") == null) {
+			return "login";
+		}
 		
 		return "main";
 	}
@@ -189,6 +188,16 @@ public class AdminController {
 	public String deleteMemberProc(MemberVO vo) {
 		memberService.deleteMember(vo);
 		return "/member/getMemberList";
+	}
+	
+	@RequestMapping("getMember.mdo")
+	public String getMember(String id, Model model) {
+		MemberVO vo = new MemberVO();
+		vo.setMember_id(id);
+		
+		model.addAttribute("member", memberService.getMember(vo));
+		
+		return "/member/updateMember";
 	}
 	
 	@PostMapping("exam.mdo")

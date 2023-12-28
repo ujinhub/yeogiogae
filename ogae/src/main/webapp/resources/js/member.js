@@ -38,11 +38,11 @@ $(function() {
 						htmlDummy += '</td>';
 						htmlDummy += '<td>';
 						if(data.member_grade == 'admin') {
-							htmlDummy += '<button type="button" class="btn btn-outline-primary btn-sm" id="updateMember" onclick="updateMember.mdo?id="' + item.member_id + '">수정</button>&nbsp;';
-							htmlDummy += '<button type="button" class="btn btn-outline-danger btn-sm" id="deleteMember" onclick="deleteMember(&#39;' + item.member_id + '&#39;)">삭제</button>';
+							htmlDummy += '<button type="button" class="btn btn-outline-primary btn-sm updateMember" id="updateMember">수정</button>&nbsp;';
+							htmlDummy += '<button type="button" class="btn btn-outline-danger btn-sm deleteMember" id="deleteMember">삭제</button>';
 						} else if(data.member_grade == 'general') {
 							if(item.member_id == data.member_id) {
-								htmlDummy += '<button type="button" class="btn btn-outline-primary btn-sm" id="updateMember" onclick="updateMember.mdo?id="' + item.member_id + '")">수정</button>&nbsp;';
+								htmlDummy += '<button type="button" class="btn btn-outline-primary btn-sm updateMember" id="updateMember")">수정</button>';
 							}
 						}
 						htmlDummy += '</td>'
@@ -94,10 +94,21 @@ $(function() {
 		}
 	});
 	
-	// ============================================================
 	$('.updateMember').on("click", function() {
-		alert('updateMember');
+		var memberId = $(this).parents().parents().prev().val();
+		
+		acyncMovePage("getMember.mdo?id=" + memberId);
 	});
 	
+	
+	if($('#memberTel').val() != null) {
+		var tel = $('#memberTel').val();
+		
+		if(tel.length == 11) {
+			$('#phone2').val(tel.substr(3,4));
+			$('#phone3').val(tel.substr(7,4));
+		}
+	}
 });
+
 	
