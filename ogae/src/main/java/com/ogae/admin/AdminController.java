@@ -36,11 +36,14 @@ public class AdminController {
 	public String mainView(HttpServletRequest request) {
 		
 		HttpSession session = request.getSession(false);
-		if(session.getAttribute("user") == null) {
-			return "login";
+		
+		if(session != null) {
+			if(session.getAttribute("user") != null) {
+				return "main";
+			}
 		}
 		
-		return "main";
+		return "login";
 	}
 	
 	/**
@@ -49,6 +52,7 @@ public class AdminController {
 	 */
 	@GetMapping("login.mdo")
 	public String loginView() {
+
 		return "login";
 	}
 	
@@ -200,6 +204,19 @@ public class AdminController {
 		return "/member/updateMember";
 	}
 	
+	@PostMapping("updateMemberProc.mdo")
+	public String updateMemberProc(MemberVO vo) {
+		
+		if(vo.getMember_password() != null) {
+			vo.setMember_password(passwordEncoder.encode(vo.getMember_password()));
+		}
+		
+		memberService.updateMember(vo);
+		
+		return "/member/getMemberList";
+	}
+	
+	// =================================================
 	@PostMapping("exam.mdo")
 	public String exam() {
 		return "/statistics/exam";

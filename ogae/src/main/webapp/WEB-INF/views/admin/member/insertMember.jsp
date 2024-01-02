@@ -33,11 +33,11 @@
 	                </div>
 	                <div class="col-md-auto"> - </div>
 	                <div class="col-md-2"> 
-	                  <input type="text" class="form-control" id="phone2">
+	                  <input type="text" class="form-control" id="phone2" maxlength="4">
 	                </div>
 	                <div class="col-md-auto"> - </div>
 	                <div class="col-md-2"> 
-	                  <input type="text" class="form-control" id="phone3">
+	                  <input type="text" class="form-control" id="phone3" maxlength="4">
 	                </div>
 					<div class="invalid-feedback">연락처를 입력해주세요!</div>
 					<input type="hidden" name="member_tel" id="memberTel">

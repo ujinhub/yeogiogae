@@ -26,4 +26,8 @@ public class MemberDAO {
 	public MemberVO getMember(MemberVO vo) {
 		return sqlSessionTemplate.selectOne("Member.getMember", vo);
 	}
+	
+	public int updateMember(MemberVO vo) {
+		return sqlSessionTemplate.update("Member.updateMember", vo);
+	}
 }

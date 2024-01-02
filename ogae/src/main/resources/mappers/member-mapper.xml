@@ -26,8 +26,11 @@
 	
 	<update id="updateMember" parameterType="member">
 		UPDATE member
-		SET item_name = #{item_name}
-		WHERE item_code = #{item_code}
+		SET member_tel = #{member_tel}, member_grade = #{member_grade}
+		<if test="member_password != null">
+			, member_password = #{member_password}
+		</if>
+		WHERE member_id = #{member_id}
 	</update>
 	
 	<delete id="deleteMember" parameterType="member">
