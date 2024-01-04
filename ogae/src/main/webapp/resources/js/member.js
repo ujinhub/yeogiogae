@@ -2,7 +2,7 @@
  * 
  */
 
-$(function() {
+$(document).ready(function() {
 	
 	$('#searchSubmit').on("click", function() {
 		var data = JSON.parse(sessionStorage.getItem('user'));
@@ -38,11 +38,11 @@ $(function() {
 						htmlDummy += '</td>';
 						htmlDummy += '<td>';
 						if(data.member_grade == 'admin') {
-							htmlDummy += '<button type="button" class="btn btn-outline-primary btn-sm" id="updateMember" onclick="updateMember.mdo?id="' + item.member_id + '">수정</button>&nbsp;';
-							htmlDummy += '<button type="button" class="btn btn-outline-danger btn-sm" id="deleteMember" onclick="deleteMember(&#39;' + item.member_id + '&#39;)">삭제</button>';
+							htmlDummy += '<button type="button" class="btn btn-outline-primary btn-sm updateMember" id="updateMember">수정</button>&nbsp;';
+							htmlDummy += '<button type="button" class="btn btn-outline-danger btn-sm deleteMember" id="deleteMember">삭제</button>';
 						} else if(data.member_grade == 'general') {
 							if(item.member_id == data.member_id) {
-								htmlDummy += '<button type="button" class="btn btn-outline-primary btn-sm" id="updateMember" onclick="updateMember.mdo?id="' + item.member_id + '")">수정</button>&nbsp;';
+								htmlDummy += '<button type="button" class="btn btn-outline-primary btn-sm updateMember" id="updateMember")">수정</button>';
 							}
 						}
 						htmlDummy += '</td>'
@@ -58,22 +58,25 @@ $(function() {
 	
 	// 관리자 등록
 	$('#insertMember').on("click", function() {
-		$('#memberTel').val($('#phone1').val() + $('#phone2').val() + $('#phone3').val());
-		var form = $("#insertMemberForm").serialize();
-		var url = 'insertMemberProc.mdo';
-	
-		$.ajax({
-			type: "post",
-			url: url,
-			data: form,
-			dataType: "html",
-			success: function(data) {
-				acyncMovePage("getMemberList.mdo");
-			},
-			error: function(request, status, error) {
-				console.log("code: " + request.status + "\n" + "message: " + request.responseText + "\n" + "error: " + error);
-			}
-		});
+		var bCheck = checkMember();
+		if(bCheck == true) {
+			$('#memberTel').val($('#phone1').val() + $('#phone2').val() + $('#phone3').val());
+			var form = $("#insertMemberForm").serialize();
+			var url = 'insertMemberProc.mdo';
+		
+			$.ajax({
+				type: "post",
+				url: url,
+				data: form,
+				dataType: "html",
+				success: function(data) {
+					acyncMovePage("getMemberList.mdo");
+				},
+				error: function(request, status, error) {
+					console.log("code: " + request.status + "\n" + "message: " + request.responseText + "\n" + "error: " + error);
+				}
+			});
+		}
 	});
 	
 	// 관리자 삭제
@@ -94,10 +97,136 @@ $(function() {
 		}
 	});
 	
-	// ============================================================
+	// 수정 화면 호출
 	$('.updateMember').on("click", function() {
-		alert('updateMember');
+		var memberId = $(this).parents().parents().prev().val();
+		
+		acyncMovePage("getMember.mdo?id=" + memberId);
+	});
+	
+	// 전화번호 출력 형식 변환
+	if($('#memberTel').val() != null) {
+		var tel = $('#memberTel').val();
+		
+		if(tel.length == 11) {
+			$('#phone2').val(tel.substr(3,4));
+			$('#phone3').val(tel.substr(7,4));
+		}
+	}
+	
+	// 정보 수정
+	$('#updateMemberProc').on("click", function() {
+		
+		if($('#memberPassword').val() == '') {
+			$('#memberPassword').siblings('.invalid-feedback').show();
+			$('#memberPassword').focus();
+			return;
+		}
+		
+		if($('#checkPassword').val() == '') {
+			alert('비밀번호를 확인해주세요');
+			return;
+		}
+		
+		var result = checkMember()
+		
+		if(result == true) {
+			var form = $("#updateMemberForm").serialize();
+			var url = 'updateMemberProc.mdo';
+		
+			$.ajax({
+				type: "post",
+				url: url,
+				data: form,
+				dataType: "html",
+				success: function(data) {
+					acyncMovePage("getMemberList.mdo");
+				},
+				error: function(request, status, error) {
+					console.log("code: " + request.status + "\n" + "message: " + request.responseText + "\n" + "error: " + error);
+				}
+			});
+		}
+		
+	});
+	
+	function checkMember() {
+
+		if($('#memberId').val() == '') {
+			$('#memberId').siblings('.invalid-feedback').show();
+			$('#memberId').focus();
+			return false;
+		}
+		
+		if($('#memberName').val() == '') {
+			$('#memberName').siblings('.invalid-feedback').show();
+			$('#memberName').focus();
+			return false;
+		}
+		
+		if($('#memberPassword').val() == '') {
+			$('#memberPassword').siblings('.invalid-feedback').show();
+			$('#memberPassword').focus();
+			return false;
+		}
+		
+		if($('#phone2').val() == '' || $('#phone3').val() == '') {
+			$('#phone3').parents().next('.invalid-feedback').show();
+			if($('#phone2').val() == '') {
+				$('#phone2').focus();
+			} else {
+				$('#phone3').focus();
+			}
+			return false;
+		}
+		
+		$('#memberTel').val($('#phone1').val() + $('#phone2').val() + $('#phone3').val());
+		
+		return true;
+	}
+	
+	$('#checkPassword').on("blur", function() {
+		var pass = $('#memberPassword').val();
+		if(pass != '') {
+			if(pass != $('#checkPassword').val()) {
+				$('#checkPassword').siblings('.invalid-feedback').show();
+			} else {
+				$('#checkPassword').siblings('.invalid-feedback').hide();
+			}
+		}
+	});
+	
+	$('#memberId').on("blur", function() {
+		if($('#memberId').val() != '') {
+			$('#memberId').siblings('.invalid-feedback').hide();
+		}
+	});
+	
+	$('#memberName').on("blur", function() {
+		if($('#memberName').val() != '') {
+			$('#memberName').siblings('.invalid-feedback').hide();
+		}
+	});
+	
+	$('#memberPassword').on("blur", function() {
+		if($('#memberPassword').val() != '') {
+			$('#memberPassword').siblings('.invalid-feedback').hide();
+		}
+	});
+	
+	$('#phone2, #phone3').on("blur", function() {
+		if($('#phone2').val() != '' && $('#phone3').val() != '') {
+			$('#phone3').parents().next('.invalid-feedback').hide();
+		} 
+	});
+	
+	$('#resetData').on("click", function() {
+		$('#updateMemberForm')[0].reset();
+		var tel = $('#memberTel').val();
+		if(tel.length == 11) {
+			$('#phone2').val(tel.substr(3,4));
+			$('#phone3').val(tel.substr(7,4));
+		}
 	});
 	
 });
-	

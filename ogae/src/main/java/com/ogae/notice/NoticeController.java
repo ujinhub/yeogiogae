@@ -9,4 +9,9 @@ public class NoticeController {
 	public String getNoticeList() {
 		return "/notice/getNoticeList";
 	}
+	
+	@PostMapping("insertNotice.mdo")
+	public String insertNotice() {
+		return "/notice/insertNotice";
+	}
 }

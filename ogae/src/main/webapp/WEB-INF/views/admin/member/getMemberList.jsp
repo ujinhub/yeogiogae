@@ -51,7 +51,7 @@
 								</c:if>
 								<c:if test="${user.member_grade == 'general'}">
 									<c:if test="${user.member_id eq member.member_id}">
-										<button type="button" class="btn btn-outline-primary btn-sm">수정</button>
+										<button type="button" class="btn btn-outline-primary btn-sm updateMember" id="updateMember">수정</button>
 									</c:if>
 								</c:if>
 							</td>

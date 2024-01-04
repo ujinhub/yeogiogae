@@ -7,4 +7,5 @@ public interface MemberService {
 	List<MemberVO> getMemberList(MemberVO vo);
 	int deleteMember(MemberVO vo);
 	MemberVO getMember(MemberVO vo);
+	int updateMember(MemberVO vo);
 }

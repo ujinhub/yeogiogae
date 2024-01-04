@@ -22,6 +22,12 @@
 <link href="resources/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <link href="resources/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
 
+<!-- Plugin CSS Files -->
+<link href="resources/plugins/dropzone/dist/dropzone.css" rel="stylesheet">
+<link href="resources/plugins/dropzone/dist/dropzone.min.css" rel="stylesheet">
+<link href="resources/plugins/dropzone/custom.css" rel="stylesheet">
+
+
 <!-- =======================================================
 * Template Name: NiceAdmin
 * Updated: Nov 17 2023 with Bootstrap v5.3.2
@@ -195,12 +201,12 @@
 				</a>
 				<ul id="rooms-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
 					<li>
-						<a onclick="acyncMovePage('getRoomList.mdo')">
+						<a id="roomList" onclick="acyncMovePage('getRoomList.mdo')">
 							<i class="bi bi-circle"></i><span>객실 목록</span>
 						</a>
 					</li>
 					<li>
-						<a onclick="acyncMovePage('getRoomItemList.mdo')">
+						<a id="roomItemList" onclick="acyncMovePage('getRoomItemList.mdo')">
 							<i class="bi bi-circle"></i><span>객실 물품</span>
 						</a>
 					</li>
@@ -209,7 +215,7 @@
 			
 			<!-- 시설 -->
 			<li class="nav-item">
-				<a class="nav-link collapsed" onclick="acyncMovePage('getFacilityList.mdo')">
+				<a id="facility" class="nav-link collapsed" onclick="acyncMovePage('getFacilityList.mdo')">
 					<i class="bi bi-signpost-2"></i>
 					<span>부가시설</span>
 				</a>
@@ -217,7 +223,7 @@
 			
 			<!-- 서비스항목 -->
 			<li class="nav-item">
-				<a class="nav-link collapsed" onclick="acyncMovePage('getServiceList.mdo')">
+				<a id="service" class="nav-link collapsed" onclick="acyncMovePage('getServiceList.mdo')">
 					<i class="bi bi-cup"></i>
 					<span>서비스 물품</span>
 				</a>
@@ -225,7 +231,7 @@
 			
 			<!-- 여행지 -->
 			<li class="nav-item">
-				<a class="nav-link collapsed" onclick="acyncMovePage('getTourList.mdo')">
+				<a id="travel" class="nav-link collapsed" onclick="acyncMovePage('getTourList.mdo')">
 					<i class="bi bi-map"></i>
 					<span>여행지</span>
 				</a>
@@ -233,7 +239,7 @@
 			
 			<!-- 예약 -->
 			<li class="nav-item">
-				<a class="nav-link collapsed" onclick="acyncMovePage('getReserveList.mdo')">
+				<a id="reserve" class="nav-link collapsed" onclick="acyncMovePage('getReserveList.mdo')">
 					<i class="bi bi-calendar-check"></i>
 					<span>예약 현황</span>
 				</a>
@@ -241,7 +247,7 @@
 			
 			<!-- 공지사항 -->
 			<li class="nav-item">
-				<a class="nav-link collapsed" onclick="acyncMovePage('getNoticeList.mdo')">
+				<a id="notice" class="nav-link collapsed" onclick="acyncMovePage('getNoticeList.mdo')">
 					<i class="bi bi-megaphone"></i>
 					<span>공지사항</span>
 				</a>
@@ -249,7 +255,7 @@
 			
 			<!-- 문의사항 -->
 			<li class="nav-item">
-				<a class="nav-link collapsed" onclick="acyncMovePage('getQnaList.mdo')">
+				<a id="qna" class="nav-link collapsed" onclick="acyncMovePage('getQnaList.mdo')">
 					<i class="bi bi-question-circle"></i>
 					<span>Q&A</span>
 				</a>
@@ -257,7 +263,7 @@
 			
 			<!-- 후기 -->
 			<li class="nav-item">
-				<a class="nav-link collapsed" onclick="acyncMovePage('getReviewList.mdo')">
+				<a id="review" class="nav-link collapsed" onclick="acyncMovePage('getReviewList.mdo')">
 					<i class="bi bi-list-stars"></i>
 					<span>이용 후기</span>
 				</a>
@@ -265,7 +271,7 @@
 			
 			<!-- 이벤트 -->
 			<li class="nav-item">
-				<a class="nav-link collapsed" onclick="acyncMovePage('getEventList.mdo')">
+				<a id="event" class="nav-link collapsed" onclick="acyncMovePage('getEventList.mdo')">
 					<i class="bi bi-stars"></i>
 					<span>이벤트</span>
 				</a>
@@ -273,7 +279,7 @@
 			
 			<!-- 약관 -->
 			<li class="nav-item">
-				<a class="nav-link collapsed" onclick="acyncMovePage('getTermsList.mdo')">
+				<a id="terms" class="nav-link collapsed" onclick="acyncMovePage('getTermsList.mdo')">
 					<i class="bi bi-pencil-square"></i>
 					<span>이용 약관</span>
 				</a>
@@ -281,14 +287,14 @@
 			
 			<!-- 통계 -->
 			<li class="nav-item">
-				<a class="nav-link collapsed" onclick="acyncMovePage('exam.mdo')">
+				<a id="statistics" class="nav-link collapsed" onclick="acyncMovePage('exam.mdo')">
 					<i class="bi bi-graph-up"></i>
 					<span>분석</span>
 				</a>
 			</li><!-- End Statisics Nav -->
 			
 			<li class="nav-item">
-				<a class="nav-link collapsed" onclick="acyncMovePage('getMemberList.mdo')">
+				<a id="member" class="nav-link collapsed" onclick="acyncMovePage('getMemberList.mdo')">
 					<i class="bi bi-people-fill"></i>
 					<span>관리자</span>
 				</a>
@@ -321,14 +327,14 @@
 	
 	<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
+	<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+  	<script src="resources/js/common.js"></script>
+  		
 	<!-- Vendor JS Files -->
 	<script src="resources/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 	<!-- Template Main JS File -->
   	<script src="resources/assets/js/main.js"></script>
-  	
-	<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-  	<script src="resources/js/common.js"></script>
   	
 </body>
 </html>

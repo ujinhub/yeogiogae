@@ -20,11 +20,24 @@ public class RoomController {
 	@Autowired
 	private RoomItemService roomItemService;
 	
+	// 객실 등록
 	@PostMapping("getRoomList.mdo")
 	public String getRoomList() {
 		return "/room/getRoomList";
 	}
 	
+	@PostMapping("insertRoom.mdo")
+	public String insertRoomView(Model model) {
+		
+		List<RoomItemVO> roomItemList = roomItemService.getRoomItemList(null);
+		model.addAttribute("roomItemList", roomItemList);
+		
+		return "/room/insertRoom";
+	}
+	
+	
+	
+	// 객실 물품 등록
 	/**
 	 * 객실 물품 검색 조회
 	 * @param vo
@@ -66,8 +79,7 @@ public class RoomController {
 			vo.setItem_writer(member.getMember_id());
 		}
 		
-		int result = roomItemService.insertRoomItem(vo);
-		System.out.println(result);
+		roomItemService.insertRoomItem(vo);
 		
 		return "/room/getRoomItemList";
 	}
@@ -80,8 +92,7 @@ public class RoomController {
 	@RequestMapping("updateRoomItem.mdo")
 	public String updateRoomItem(RoomItemVO vo) {
 		
-		int result = roomItemService.updateRoomItem(vo);
-		System.out.println(result);
+		roomItemService.updateRoomItem(vo);
 		
 		return "/room/getRoomItemList";
 	}
@@ -94,9 +105,9 @@ public class RoomController {
 	@RequestMapping("deleteRoomItem.mdo")
 	public String deleteRoomItem(RoomItemVO vo) {
 		
-		int result = roomItemService.deleteRoomItem(vo);
-		System.out.println(result);
+		roomItemService.deleteRoomItem(vo);
 		
 		return "/room/getRoomItemList";
 	}
+	
 }

@@ -35,13 +35,15 @@ public class AdminController {
 	@GetMapping("main.mdo")
 	public String mainView(HttpServletRequest request) {
 		
-		// 나중에 주석 풀기
-//		HttpSession session = request.getSession(false);
-//		if(session.getAttribute("user") == null) {
-//			return "login";
-//		}
+		HttpSession session = request.getSession(false);
 		
-		return "main";
+		if(session != null) {
+			if(session.getAttribute("user") != null) {
+				return "main";
+			}
+		}
+		
+		return "login";
 	}
 	
 	/**
@@ -50,6 +52,7 @@ public class AdminController {
 	 */
 	@GetMapping("login.mdo")
 	public String loginView() {
+
 		return "login";
 	}
 	
@@ -191,6 +194,29 @@ public class AdminController {
 		return "/member/getMemberList";
 	}
 	
+	@RequestMapping("getMember.mdo")
+	public String getMember(String id, Model model) {
+		MemberVO vo = new MemberVO();
+		vo.setMember_id(id);
+		
+		model.addAttribute("member", memberService.getMember(vo));
+		
+		return "/member/updateMember";
+	}
+	
+	@PostMapping("updateMemberProc.mdo")
+	public String updateMemberProc(MemberVO vo) {
+		
+		if(vo.getMember_password() != null) {
+			vo.setMember_password(passwordEncoder.encode(vo.getMember_password()));
+		}
+		
+		memberService.updateMember(vo);
+		
+		return "/member/getMemberList";
+	}
+	
+	// =================================================
 	@PostMapping("exam.mdo")
 	public String exam() {
 		return "/statistics/exam";

@@ -9,11 +9,11 @@
 	<div class="card">
 		<div class="card-body">
 			<div class="top">
-				<button type="button" class="btn btn-primary btn-sm">+ 추가</button>
+				<button type="button" class="btn btn-primary btn-sm" onclick="acyncMovePage('insertRoom.mdo')">+ 추가</button>
 				
 				<div class="search-bar">
 					<form action="#" class="search-form d-flex align-items-center" method="post">
-						<input type="text" name="query" placeholder="Search" title="Enter search keyword">
+						<input type="text" name="keyword" placeholder="Search" title="Enter search keyword">
 						<button type="submit" title="Search" class="btn btn-outline-secondary btn-sm"><i class="bi bi-search"></i></button>
 					</form>
 				</div><!-- End Search Bar -->

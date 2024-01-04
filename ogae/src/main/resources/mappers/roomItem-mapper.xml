@@ -3,8 +3,8 @@
 
 <mapper namespace="RoomItem">
 	<insert id="insertRoomItem" parameterType="roomItem">
-		INSERT INTO room_item(item_name, item_writer)
-		VALUES(#{item_name}, #{item_writer})
+		INSERT INTO room_item(item_id, item_name, item_writer)
+		VALUES(TO_CHAR(NEXTVAL('seq_item'), 'ITEM9000'), #{item_name}, #{item_writer})
 	</insert>
 	
 	<select id="getRoomItemCount" resultType="int">
@@ -20,17 +20,17 @@
 				item_name LIKE '%' || #{keyword} || '%'
 			</if>
 		</where>
-		ORDER BY item_code DESC
+		ORDER BY item_id DESC
 	</select>
 	
 	<update id="updateRoomItem" parameterType="roomItem">
 		UPDATE room_item
 		SET item_name = #{item_name}
-		WHERE item_code = #{item_code}
+		WHERE item_id = #{item_id}
 	</update>
 	
 	<delete id="deleteRoomItem" parameterType="roomItem">
 		DELETE FROM room_item
-		WHERE item_code = #{item_code}
+		WHERE item_id = #{item_id}
 	</delete>
 </mapper>

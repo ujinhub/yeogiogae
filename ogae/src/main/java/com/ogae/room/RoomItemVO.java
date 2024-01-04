@@ -12,7 +12,7 @@ import lombok.ToString;
 @Setter
 @ToString
 public class RoomItemVO {
-	private int item_code;
+	private String item_id;
 	private String item_name;
 	private String item_writer;
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
