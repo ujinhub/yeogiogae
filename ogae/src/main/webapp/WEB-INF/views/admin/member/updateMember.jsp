@@ -4,6 +4,13 @@
 <!DOCTYPE html>
 <div class="pagetitle">
 	<h1>관리자 추가</h1>
+	<nav>
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item"><a href="main.mdo">메인화면</a></li>
+			<li class="breadcrumb-item"><a href="#" onclick="acyncMovePage('getMemberList.mdo')">관리자 목록</a></li>
+			<li class="breadcrumb-item active">관리자 수정</li>
+		</ol>
+	</nav>
 </div><!-- End Page Title -->
 
 <div class="container">
@@ -62,7 +69,7 @@
 					<div class="col-12" align="right">
 						<button class="btn btn-success" type="button" id="updateMemberProc">수정</button>
 						<button class="btn btn-secondary" type="button" id="resetData">취소</button>
-						<button class="btn btn-light" type="button" onclick="acyncMovePage('getMemberList.mdo')">목록</button>
+						<!-- button class="btn btn-light" type="button" onclick="acyncMovePage('getMemberList.mdo')">목록</button -->
 					</div>
 				</form>
 			</div>

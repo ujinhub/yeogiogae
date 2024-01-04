@@ -9,4 +9,9 @@ public class ServiceItemController {
 	public String getServiceList() {
 		return "/service/getServiceList";
 	}
+	
+	@PostMapping("insertService.mdo")
+	public String insertService() {
+		return "/service/insertService";
+	}
 }

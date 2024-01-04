@@ -2,7 +2,7 @@
  * 
  */
 
-$(function() {
+$(document).ready(function() {
 	
 	$('#searchSubmit').on("click", function() {
 		var data = JSON.parse(sessionStorage.getItem('user'));
@@ -220,9 +220,13 @@ $(function() {
 		} 
 	});
 	
-	function resetData() {
-		alert('reset');
-	}
-});
-
+	$('#resetData').on("click", function() {
+		$('#updateMemberForm')[0].reset();
+		var tel = $('#memberTel').val();
+		if(tel.length == 11) {
+			$('#phone2').val(tel.substr(3,4));
+			$('#phone3').val(tel.substr(7,4));
+		}
+	});
 	
+});

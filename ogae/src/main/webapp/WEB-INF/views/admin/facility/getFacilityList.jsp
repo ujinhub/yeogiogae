@@ -9,7 +9,7 @@
 	<div class="card">
 		<div class="card-body">
 			<div class="top">
-				<button type="button" class="btn btn-primary btn-sm">+ 추가</button>
+				<button type="button" class="btn btn-primary btn-sm" onclick="acyncMovePage('insertFacility.mdo')">+ 추가</button>
 				
 				<div class="search-bar">
 					<form action="#" class="search-form d-flex align-items-center" method="post">

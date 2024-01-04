@@ -9,4 +9,9 @@ public class FacilityController {
 	public String getFacilityList() {
 		return "/facility/getFacilityList";
 	}
+	
+	@PostMapping("insertFacility.mdo")
+	public String insertFacility() {
+		return "/facility/insertFacility";
+	}
 }
