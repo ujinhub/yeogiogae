@@ -22,7 +22,7 @@
 			<table class="table table-bordered">
 				<thead>
 					<tr>
-						<th scope="col">서비스코드</th>
+						<th scope="col">#</th>
 						<th scope="col">썸네일</th>
 						<th scope="col">서비스명</th>
 						<th scope="col">작성자</th>
@@ -32,7 +32,7 @@
 				</thead>
 				<tbody>
 					<tr>
-						<th scope="row">SERVICE-01</th>
+						<th scope="row">1</th>
 						<td><img src="https://ogae-dev.s3.ap-northeast-2.amazonaws.com/upload/service/202311272006958001.jpg" height="90px"></td>
 						<td>BBQ</td>
 						<td>admin</td>

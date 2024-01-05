@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <div class="pagetitle">
-	<h1>이용약관</h1>
+	<h1>이용약관 목록</h1>
 </div><!-- End Page Title -->
 
 <section class="section terms">
@@ -22,7 +22,7 @@
 			<table class="table table-bordered">
 				<thead>
 					<tr>
-						<th scope="col">약관코드</th>
+						<th scope="col">#</th>
 						<th scope="col">약관명</th>
 						<th scope="col">필수여부</th>
 						<th scope="col">등록일</th>
@@ -31,7 +31,7 @@
 				</thead>
 				<tbody>
 					<tr>
-						<th scope="row">TERMS-01</th>
+						<th scope="row">1</th>
 						<td>이용시 유의사항에 동의</td>
 						<td>Y</td>
 						<td>2023-01-01</td>

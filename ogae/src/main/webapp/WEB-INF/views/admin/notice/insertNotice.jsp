@@ -27,7 +27,7 @@
 					<div class="row mb-3">
 						<label for="noticeContent" class="col-sm-2 col-form-label">내용</label>
 						<div class="col-sm-10">
-
+							<textarea id="summernote" name="notice_content" class="form-control"></textarea>
 						</div>
 					</div>
 					<div class="row mb-3">
@@ -52,6 +52,7 @@
 	</div>
 </section>
 
+<script src="resources/js/util.js"></script>
 <script src="resources/js/file.js"></script>
 <!-- Plugin JS Files -->
 <script src="resources/plugins/dropzone/dist/dropzone.js"></script>

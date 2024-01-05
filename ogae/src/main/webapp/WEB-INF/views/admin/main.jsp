@@ -26,6 +26,8 @@
 <link href="resources/plugins/dropzone/dist/dropzone.css" rel="stylesheet">
 <link href="resources/plugins/dropzone/dist/dropzone.min.css" rel="stylesheet">
 <link href="resources/plugins/dropzone/custom.css" rel="stylesheet">
+<link href="resources/plugins/summernote/summernote-lite.css" rel="stylesheet">
+
 
 
 <!-- =======================================================
@@ -335,6 +337,11 @@
 
 	<!-- Template Main JS File -->
   	<script src="resources/assets/js/main.js"></script>
+  	
+  	<!-- Plugins JS File -->
+  	<script src="resources/plugins/summernote/summernote-lite.js"></script>
+  	<script src="resources/plugins/summernote/lang/summernote-ko-KR.js"></script>
+  	
   	
 </body>
 </html>
