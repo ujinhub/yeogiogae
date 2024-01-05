@@ -25,6 +25,13 @@
 						</div>
 					</div>
 					<div class="row mb-3">
+						<label for="roomName" class="col-sm-2 col-form-label">서비스 요금</label>
+						<div class="col-sm-10 input-group">
+							<span class="input-group-text">￦</span>
+							<input type="text" class="form-control" name="service_price">
+						</div>
+					</div>
+					<div class="row mb-3">
 						<label for="serviceInfo" class="col-sm-2 col-form-label">서비스 물품 정보</label>
 						<div class="col-sm-10">
 							<textarea class="form-control" name="serivce_info"></textarea>

@@ -22,7 +22,7 @@
 			<table class="table table-bordered">
 				<thead>
 					<tr>
-						<th scope="col">시설코드</th>
+						<th scope="col">#</th>
 						<th scope="col">썸네일</th>
 						<th scope="col">시설명</th>
 						<th scope="col">작성자</th>
@@ -32,7 +32,7 @@
 				</thead>
 				<tbody>
 					<tr>
-						<th scope="row">FACILITY-01</th>
+						<th scope="row">1</th>
 						<td><img src="https://ogae-dev.s3.ap-northeast-2.amazonaws.com/upload/facility/202311231424479001.jpg" height="90px"></td>
 						<td>야외수영장</td>
 						<td>admin</td>

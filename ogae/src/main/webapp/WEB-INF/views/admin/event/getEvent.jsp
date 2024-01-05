@@ -2,12 +2,12 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <div class="pagetitle">
-	<h1>이용약관 수정</h1>
+	<h1>이벤트 수정</h1>
 	<nav>
 		<ol class="breadcrumb">
 			<li class="breadcrumb-item"><a href="main.mdo">메인화면</a></li>
-			<li class="breadcrumb-item"><a href="#" onclick="acyncMovePage('getTermsList.mdo')">이용약관 목록</a></li>
-			<li class="breadcrumb-item active">이용약관 수정</li>
+			<li class="breadcrumb-item"><a href="#" onclick="acyncMovePage('getEventList.mdo')">이벤트 목록</a></li>
+			<li class="breadcrumb-item active">이벤트 수정</li>
 		</ol>
 	</nav>
 </div><!-- End Page Title -->
@@ -19,41 +19,40 @@
 				<form action="#" method="post">
 					<input type="hidden" name="terms_code" class="form-control" value="Terms-01" disabled>
 					<div class="row mb-3">
-						<label for="termsTitle"" class="col-sm-2 col-form-label">약관명</label>
+						<label for="eventTitle"" class="col-sm-2 col-form-label">이벤트명</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" value="이용시 유의사항에 동의">
+							<input type="text" name="event_title" class="form-control" value="연말 할인 이벤트">
 						</div>
 					</div>
 					<div class="row mb-3">
-						<label for="termsContent" class="col-sm-2 col-form-label">약관 내용</label>
+						<label for="eventContent" class="col-sm-2 col-form-label">이벤트 내용</label>
 						<div class="col-sm-10">
-							<textarea id="summernote" name="terms_content" class="form-control" rows="5">
-								보호자 동반없는 미성년자는 예약 및 입실 불가합니다. 예약변경을 위한 취소시에도 10% 취소수수료가 부과되오니 신중하게 예약하시기 바랍니다.
+							<textarea id="summernote_event" name="event_content" class="form-control">
+								연말 할인 이벤트 입니다.
 							</textarea>
 						</div>
 					</div>
 					<div class="row mb-3">
-						<label class="col-sm-2 col-form-label">필수여부</label>
+						<label for="endDate" class="col-sm-2 col-form-label">시작일</label>
 						<div class="col-sm-10">
-							<div class="form-check">
-								<input class="form-check-input" type="checkbox" id="termsCheck" checked>
-								<label class="form-check-label" for="termsCheck">필수</label>
-							</div>
-						</div>								
-					</div>
-					<div class="row mb-3">
-						<label for="endDate" class="col-sm-2 col-form-label">만료일</label>
-						<div class="col-sm-10">
-							<input type="date" class="form-control" value="2023-12-31">
+							<input type="event_start" class="form-control" value="2023-12-01">
 						</div>
 					</div>
 					<div class="row mb-3">
-						<label for="startDate" class="col-sm-2 col-form-label">정책적용일</label>
+						<label for="startDate" class="col-sm-2 col-form-label">종료일</label>
 						<div class="col-sm-10">
-							<input type="date" class="form-control" value="2023-01-01">
+							<input type="event_end" class="form-control" value="2023-12-31">
 						</div>
 					</div>
-					
+					<div class="row mb-3">
+						<label for="serviceUse" class="col-sm-2 col-form-label">이벤트 공개 여부</label>
+						<div class="col-sm-10">
+							<select class="form-select" name="service_use" aria-label="Default select example">
+								<option value="1" selected>공개</option>
+								<option value="0">비공개</option>
+							</select>
+						</div>
+					</div>
 					<div class="col-12" align="right">
 						<button class="btn btn-success" type="submit">수정</button>
 						<button class="btn btn-secondary" type="reset">취소</button>
